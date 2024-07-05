@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.nexuspromo.client.R
+import com.nexuspromo.client.ui.activities.detail.DetailActivity
 import com.nexuspromo.client.ui.theme.blue2
 import com.nexuspromo.client.ui.theme.blue3
 import com.nexuspromo.client.ui.viewmodels.MainViewModel
@@ -46,7 +47,7 @@ fun MainScreen(context: Context, viewModel: MainViewModel, onFail: () -> Unit){
         }
     }else{
         if(isFail){
-            onFail
+            onFail()
         }else{
             ConstraintLayout(
                 modifier = Modifier
@@ -57,7 +58,7 @@ fun MainScreen(context: Context, viewModel: MainViewModel, onFail: () -> Unit){
                 Text(
                     text = context.getString(R.string.tvListPromoTitle),
                     color = blue2,
-                    fontSize = 20.sp,
+                    fontSize = 25.sp,
                     modifier = Modifier
                         .constrainAs(promoTitle){
                             start.linkTo(parent.start)
@@ -73,7 +74,12 @@ fun MainScreen(context: Context, viewModel: MainViewModel, onFail: () -> Unit){
                             top.linkTo(promoTitle.bottom)
                         }
                         .padding(top = 10.dp)
-                )
+                        .padding(horizontal = 5.dp)
+                ){
+                    context.startActivity(
+                        DetailActivity.newIntent(context, it)
+                    )
+                }
             }
         }
     }

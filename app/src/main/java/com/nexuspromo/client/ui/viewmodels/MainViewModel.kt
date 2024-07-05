@@ -1,5 +1,6 @@
 package com.nexuspromo.client.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +15,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val promoRepository: PromoRepository
 ) : ViewModel() {
+    private val TAG = MainViewModel::class.java.simpleName
 
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading
@@ -33,6 +35,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val response = promoRepository.getPromos()
+                Log.d(TAG, "response: $response")
                 _promoResponse.value = response
             } catch (e: Exception) {
                 _isLoading.value = false

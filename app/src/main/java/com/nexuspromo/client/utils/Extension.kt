@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 
 class Extension {
@@ -30,7 +31,7 @@ class Extension {
                     tint = Color.Red // Warna ikon bisa disesuaikan atau dijadikan parameter tambahan
                 )
                 Spacer(modifier = Modifier.width(8.dp)) // Spacer for padding
-                Text(text = input, color = Color.Black) // Contoh teks bisa diganti atau dijadikan parameter tambahan
+                Text(text = input, color = Color.Black, fontSize = 16.sp) // Contoh teks bisa diganti atau dijadikan parameter tambahan
             }
         }
 
