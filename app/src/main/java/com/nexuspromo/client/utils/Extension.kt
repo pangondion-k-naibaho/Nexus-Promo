@@ -16,6 +16,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class Extension {
     companion object{
@@ -50,6 +52,17 @@ class Extension {
                 modifier = modifier,
                 contentScale = contentScale
             )
+        }
+
+        fun String.convertDate(): String {
+            return try {
+                val zonedDateTime = ZonedDateTime.parse(this)
+                val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+                zonedDateTime.format(formatter)
+            } catch (e: Exception) {
+                // Return the original string if parsing fails
+                this
+            }
         }
     }
 }

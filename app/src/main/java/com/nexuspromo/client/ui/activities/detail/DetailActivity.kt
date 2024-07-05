@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.nexuspromo.client.data.model.PromoData
+import com.nexuspromo.client.ui.components.DetailScreen
 import com.nexuspromo.client.ui.theme.NexusPromoTheme
 
 class DetailActivity : ComponentActivity() {
@@ -26,7 +27,7 @@ class DetailActivity : ComponentActivity() {
 
         setContent{
             NexusPromoTheme {
-
+                DetailScreen(dataPromo = deliveredPromoData)
             }
         }
     }
